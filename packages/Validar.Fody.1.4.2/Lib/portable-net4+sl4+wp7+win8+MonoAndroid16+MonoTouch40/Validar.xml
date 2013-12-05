@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Validar</name>
+    </assembly>
+    <members>
+        <member name="T:Validar.InjectValidationAttribute">
+            <summary>
+            Used to flag items as requiring validation.
+            </summary>
+        </member>
+        <member name="T:Validar.ValidationTemplateAttribute">
+            <summary>
+            Used to point to the correct validation Template.
+            </summary>
+        </member>
+        <member name="M:Validar.ValidationTemplateAttribute.#ctor(System.Type)">
+            <summary>
+            Construct a new instance of <see cref="T:Validar.ValidationTemplateAttribute"/>
+            </summary>
+            <param name="validationTemplate">The validation template <see cref="T:System.Type"/> to use.</param>
+        </member>
+    </members>
+</doc>

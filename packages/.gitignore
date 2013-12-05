@@ -1,0 +1,5 @@
+#whitelist all nuget stuff
+!*
+RavenDB.Server.*/tools/Database/
+RavenDB.Server.*/tools/Logs/
+RavenDB.Server.*/tools/Raven/
