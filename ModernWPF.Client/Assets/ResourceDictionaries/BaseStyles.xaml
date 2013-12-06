@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="ErrorHighlightColor">#FFdc000c</Color>
+    
+    <SolidColorBrush x:Key="ErrorHighlightColorBrush" Color="{StaticResource ErrorHighlightColor}"/>
+</ResourceDictionary>

@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Caliburn.Micro;
+using ModernWPF.Client.Features.Application.Customer;
 
 namespace ModernWPF.Client
 {
@@ -16,6 +17,9 @@ namespace ModernWPF.Client
             get { return true; }
         }
 
-
+        protected override void OnActivate()
+        {
+            Activate<CustomerViewModel>();
+        }
     }
 }

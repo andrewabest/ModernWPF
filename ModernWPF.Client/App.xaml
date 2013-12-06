@@ -1,8 +1,19 @@
 ﻿<Application x:Class="ModernWPF.Client.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml">
+             xmlns:client="clr-namespace:ModernWPF.Client">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary>
+                    <client:AppBootstrapper x:Key="bootstrapper" />
+                </ResourceDictionary>
+                <ResourceDictionary Source="Assets/ResourceDictionaries/Converters.xaml"/>
+                <ResourceDictionary Source="Assets/ResourceDictionaries/BaseStyles.xaml"/>
+                <ResourceDictionary Source="Assets/ResourceDictionaries/ControlStyles.xaml"/>
+                <ResourceDictionary Source="Assets/ResourceDictionaries/LabelStyles.xaml"/>
+                <ResourceDictionary Source="Assets/ResourceDictionaries/ValidationStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

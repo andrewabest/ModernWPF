@@ -83,6 +83,16 @@
     <Compile Include="AutofacModules\MessagingModule.cs" />
     <Compile Include="EventAggregatorSubscriptionTracker.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Features\Actions\ActionBase.cs" />
+    <Compile Include="Features\Application\Customer\CustomerDetailsViewModel.cs" />
+    <Compile Include="Features\Application\Customer\CustomerView.xaml.cs">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Application\Customer\CustomerViewModel.cs" />
+    <Compile Include="Features\Controls\AutoGrid.cs" />
+    <Compile Include="Features\Controls\Label.cs" />
+    <Compile Include="Features\Converters\HorizontalAlignmentToTextAlignmentConverter.cs" />
+    <Compile Include="Features\Converters\OrBoolConverter.cs" />
     <Compile Include="Features\Validation\IValidatable.cs" />
     <Compile Include="Features\Validation\ValidatableViewModel.cs" />
     <Compile Include="Features\Validation\ValidatableViewModelExtensions.cs" />
@@ -136,6 +146,30 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Assets\ResourceDictionaries\BaseStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\ResourceDictionaries\ControlStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\ResourceDictionaries\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\ResourceDictionaries\LabelStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\ResourceDictionaries\ValidationStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Application\Customer\CustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

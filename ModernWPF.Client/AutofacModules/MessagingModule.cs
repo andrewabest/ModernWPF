@@ -34,6 +34,10 @@ namespace ModernWPF.Client.AutofacModules
 
         protected override void Load(ContainerBuilder builder)
         {
+            builder.RegisterType<EventAggregator>()
+                .As<IEventAggregator>()
+                .SingleInstance();
+
             builder.RegisterType<EventAggregatorSubscriptionTracker>()
                 .As<IEventAggregatorSubscriptionTracker>()
                 .SingleInstance();
