@@ -6,6 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-           <ContentControl x:Name="ActiveItem" /> 
+           <ContentControl x:Name="ActiveItem" />
+           <ContentControl x:Name="Alerts" />
     </Grid>
 </UserControl>

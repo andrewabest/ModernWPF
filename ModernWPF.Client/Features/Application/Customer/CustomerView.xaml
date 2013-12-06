@@ -15,5 +15,7 @@
 
         <controls:Label  Target="{Binding ElementName=CustomerDetails_FavouriteFood}" />
         <TextBox x:Name="CustomerDetails_FavouriteFood" />
+        
+        <Button Command="{Binding CreateCustomerAction}" Content="Create" />
     </controls:AutoGrid>
 </UserControl>

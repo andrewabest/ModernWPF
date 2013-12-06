@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Autofac;
 using Caliburn.Micro;
+using ModernWPF.Client.Features.Alerts;
 
 namespace ModernWPF.Client
 {
@@ -11,6 +12,7 @@ namespace ModernWPF.Client
         public AppBootstrapper()
         {
             IoC.LetThereBeIoC();
+            Alert.EventAggregator = IoC.Container.Resolve<IEventAggregator>();
         }
 
         [DebuggerStepThrough]

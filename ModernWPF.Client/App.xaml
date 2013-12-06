@@ -13,6 +13,7 @@
                 <ResourceDictionary Source="Assets/ResourceDictionaries/ControlStyles.xaml"/>
                 <ResourceDictionary Source="Assets/ResourceDictionaries/LabelStyles.xaml"/>
                 <ResourceDictionary Source="Assets/ResourceDictionaries/ValidationStyles.xaml"/>
+                <ResourceDictionary Source="Assets/ResourceDictionaries/AlertStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
