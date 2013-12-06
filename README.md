@@ -17,7 +17,7 @@ A sample WPF application demonstrating modern approaches to common rich applicat
 
 * * * *
 
-## A couple of other implementation points when creating a Caliburn.Micro-based WPF application
+### A couple of other implementation points when creating a Caliburn.Micro-based WPF application
 
 * Don't use Caliburn.Micro's IResult. Just Don't.
 * Also don't use Caliburns action invoking conventions for allowing you to execute methods inline in the ViewModel as an action, except in the simplest of cases. If it has logic, or requires dependencies, it belongs in an ActionBase implementation.
