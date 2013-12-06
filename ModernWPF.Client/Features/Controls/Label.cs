@@ -18,36 +18,12 @@ namespace ModernWPF.Client.Features.Controls
     {
         private new static readonly DependencyProperty DataContextProperty = DependencyProperty.Register("DataContext", typeof(object), typeof(Label), new PropertyMetadata(OnDataContextPropertyChanged));
 
-        /// <summary>
-        ///     Identifies the <see cref="P:NextGen.Client.Features.Shared.Controls.Label.IsRequired" /> dependency property.
-        /// </summary>
-        /// <returns>
-        ///     The identifier for the <see cref="P:NextGen.Client.Features.Shared.Controls.Label.IsRequired" /> dependency property.
-        /// </returns>
         public static readonly DependencyProperty IsRequiredProperty = DependencyProperty.Register("IsRequired", typeof(bool), typeof(Label), new PropertyMetadata(OnIsRequiredPropertyChanged));
 
-        /// <summary>
-        ///     Identifies the <see cref="P:NextGen.Client.Features.Shared.Controls.Label.IsValid" /> dependency property.
-        /// </summary>
-        /// <returns>
-        ///     The identifier for the <see cref="P:NextGen.Client.Features.Shared.Controls.Label.IsValid" /> dependency property.
-        /// </returns>
         public static readonly DependencyProperty IsValidProperty = DependencyProperty.Register("IsValid", typeof(bool), typeof(Label), new PropertyMetadata(true, OnIsValidPropertyChanged));
 
-        /// <summary>
-        ///     Identifies the <see cref="P:NextGen.Client.Features.Shared.Controls.Label.PropertyPath" /> dependency property.
-        /// </summary>
-        /// <returns>
-        ///     The identifier for the <see cref="P:NextGen.Client.Features.Shared.Controls.Label.PropertyPath" /> dependency property.
-        /// </returns>
         public static readonly DependencyProperty PropertyPathProperty = DependencyProperty.Register("PropertyPath", typeof(string), typeof(Label), new PropertyMetadata(OnPropertyPathPropertyChanged));
 
-        /// <summary>
-        ///     Identifies the <see cref="P:NextGen.Client.Features.Shared.Controls.Label.Target" /> dependency property.
-        /// </summary>
-        /// <returns>
-        ///     The identifier for the <see cref="P:NextGen.Client.Features.Shared.Controls.Label.Target" /> dependency property.
-        /// </returns>
         public static readonly DependencyProperty TargetProperty = DependencyProperty.Register("Target", typeof(FrameworkElement), typeof(Label), new PropertyMetadata(OnTargetPropertyChanged));
 
         private readonly List<ValidationError> _errors;
@@ -63,9 +39,6 @@ namespace ModernWPF.Client.Features.Controls
         {
         }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="T:NextGen.Client.Features.Shared.Controls.Label" /> class.
-        /// </summary>
         public Label()
         {
             DefaultStyleKey = typeof(Label);
@@ -75,15 +48,6 @@ namespace ModernWPF.Client.Features.Controls
             _canContentUseMetaData = Content == null;
         }
 
-        /// <summary>
-        ///     Gets or sets a value that indicates whether the property bound to the
-        ///     <see
-        ///         cref="P:NextGen.Client.Features.Shared.Controls.Label.Target" />
-        ///     field is required.
-        /// </summary>
-        /// <returns>
-        ///     true if the field is required; otherwise, false. The default is false.
-        /// </returns>
         public bool IsRequired
         {
             get { return (bool)GetValue(IsRequiredProperty); }
@@ -94,48 +58,18 @@ namespace ModernWPF.Client.Features.Controls
             }
         }
 
-        /// <summary>
-        ///     Gets a value that indicates whether the <see cref="P:NextGen.Client.Features.Shared.Controls.Label.Target" /> field data is valid.
-        /// </summary>
-        /// <returns>
-        ///     true if the field data is valid; otherwise, false. The default is true.
-        /// </returns>
         public bool IsValid
         {
             get { return (bool)GetValue(IsValidProperty); }
             private set { (this).SetValueNoCallback(IsValidProperty, value); }
         }
 
-        /// <summary>
-        ///     Gets or sets the path to the dependency property on the <see cref="P:System.Windows.FrameworkElement.DataContext" /> of the
-        ///     <see
-        ///         cref="P:NextGen.Client.Features.Shared.Controls.Label.Target" />
-        ///     control that this
-        ///     <see
-        ///         cref="T:NextGen.Client.Features.Shared.Controls.Label" />
-        ///     is associated with.
-        /// </summary>
-        /// <returns>
-        ///     The path to the dependency property on the <see cref="P:System.Windows.FrameworkElement.DataContext" /> of the
-        ///     <see
-        ///         cref="P:NextGen.Client.Features.Shared.Controls.Label.Target" />
-        ///     control that this
-        ///     <see
-        ///         cref="T:NextGen.Client.Features.Shared.Controls.Label" />
-        ///     is associated with. The default is null.
-        /// </returns>
         public string PropertyPath
         {
             get { return GetValue(PropertyPathProperty) as string; }
             set { SetValue(PropertyPathProperty, value); }
         }
 
-        /// <summary>
-        ///     Gets or sets the control that this <see cref="T:NextGen.Client.Features.Shared.Controls.Label" /> is associated with.
-        /// </summary>
-        /// <returns>
-        ///     The control that this <see cref="T:NextGen.Client.Features.Shared.Controls.Label" /> is associated with.
-        /// </returns>
         public FrameworkElement Target
         {
             get { return GetValue(TargetProperty) as FrameworkElement; }
@@ -208,9 +142,6 @@ namespace ModernWPF.Client.Features.Controls
             label.ParseTargetValidState();
         }
 
-        /// <summary>
-        ///     Reloads the metadata from the <see cref="P:NextGen.Client.Features.Shared.Controls.Label.Target" /> element.
-        /// </summary>
         public virtual void Refresh()
         {
             _isRequiredOverridden = false;
@@ -218,15 +149,6 @@ namespace ModernWPF.Client.Features.Controls
             ParseTargetValidState();
         }
 
-        /// <summary>
-        ///     Called when the value of the <see cref="P:System.Windows.Controls.ContentControl.Content" /> property changes.
-        /// </summary>
-        /// <param name="oldContent">
-        ///     The old value of the <see cref="P:System.Windows.Controls.ContentControl.Content" /> property.
-        /// </param>
-        /// <param name="newContent">
-        ///     The new value of the <see cref="P:System.Windows.Controls.ContentControl.Content" /> property.
-        /// </param>
         protected override void OnContentChanged(object oldContent, object newContent)
         {
             base.OnContentChanged(oldContent, newContent);
@@ -234,19 +156,6 @@ namespace ModernWPF.Client.Features.Controls
             _canContentUseMetaData = _isContentBeingSetInternally || newContent == null;
         }
 
-        /// <summary>
-        ///     Returns a <see cref="T:System.Windows.Automation.Peers.LabelAutomationPeer" /> for use by the Silverlight automation infrastructure.
-        /// </summary>
-        /// <returns>
-        ///     A <see cref="T:System.Windows.Automation.Peers.LabelAutomationPeer" /> for the
-        ///     <see
-        ///         cref="T:NextGen.Client.Features.Shared.Controls.Label" />
-        ///     object.
-        /// </returns>
-        //protected override AutomationPeer OnCreateAutomationPeer()
-        //{
-        //    return (AutomationPeer)new LabelAutomationPeer(this);
-        //}
         private void SetContentInternally(object value)
         {
             try
