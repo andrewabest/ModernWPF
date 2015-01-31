@@ -8,22 +8,22 @@ namespace ModernWPF.Client.Features.Alerts
 
         public static void OfInformation(string title, string message)
         {
-            EventAggregator.Publish(new AlertMessage(title, message, AlertSeverity.Information));
+            EventAggregator.PublishOnUIThread(new AlertMessage(title, message, AlertSeverity.Information));
         }
 
         public static void OfWarning(string title, string message)
         {
-            EventAggregator.Publish(new AlertMessage(title, message, AlertSeverity.Warning));
+            EventAggregator.PublishOnUIThread(new AlertMessage(title, message, AlertSeverity.Warning));
         }
 
         public static void OfSuccess(string title, string message)
         {
-            EventAggregator.Publish(new AlertMessage(title, message, AlertSeverity.Success));
+            EventAggregator.PublishOnUIThread(new AlertMessage(title, message, AlertSeverity.Success));
         }
 
         public static void OfError(string title, string message)
         {
-            EventAggregator.Publish(new AlertMessage(title, message, AlertSeverity.Error));
+            EventAggregator.PublishOnUIThread(new AlertMessage(title, message, AlertSeverity.Error));
         }
     }
 }

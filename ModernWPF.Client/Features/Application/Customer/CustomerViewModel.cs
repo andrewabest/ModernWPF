@@ -28,7 +28,7 @@ namespace ModernWPF.Client.Features.Application.Customer
 
         private void CustomerDetailsChanged(object sender, PropertyChangedEventArgs e)
         {
-            _eventAggregator.Publish(new CustomerDetailsChangedMessage(CustomerDetails));
+            _eventAggregator.PublishOnUIThread(new CustomerDetailsChangedMessage(CustomerDetails));
         }
     }
 }

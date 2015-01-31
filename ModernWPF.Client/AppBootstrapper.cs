@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Windows;
 using Autofac;
 using Caliburn.Micro;
 using ModernWPF.Client.Features.Alerts;
 
 namespace ModernWPF.Client
 {
-    public class AppBootstrapper : Bootstrapper<ShellViewModel>
+    public class AppBootstrapper : BootstrapperBase
     {
         public AppBootstrapper()
         {
             IoC.LetThereBeIoC();
             Alert.EventAggregator = IoC.Container.Resolve<IEventAggregator>();
+            Initialize();
         }
 
         [DebuggerStepThrough]
@@ -31,6 +33,11 @@ namespace ModernWPF.Client
         protected override void BuildUp(object instance)
         {
             IoC.Container.InjectProperties(instance);
+        }
+
+        protected override void OnStartup(object sender, StartupEventArgs e)
+        {
+            DisplayRootViewFor<ShellViewModel>();
         }
 
         protected override void OnExit(object sender, EventArgs e)
