@@ -3,5 +3,6 @@
                     xmlns:converters="clr-namespace:ModernWPF.Client.Features.Converters">
     <converters:OrBoolConverter x:Key="OrBoolConverter"/>
     <converters:HorizontalAlignmentToTextAlignmentConverter x:Key="HorizontalAlignmentToTextAlignmentConverter"/>
+    <converters:BooleanToCollapsedVisibilityConverter x:Key="BooleanToCollapsedVisibilityConverter" />
     <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
 </ResourceDictionary>

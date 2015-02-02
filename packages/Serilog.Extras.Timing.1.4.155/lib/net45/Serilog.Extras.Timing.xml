@@ -1,0 +1,272 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Serilog.Extras.Timing</name>
+    </assembly>
+    <members>
+        <member name="T:Serilog.Extras.Timing.AtomicLong">
+            <summary>
+            Provides lock-free atomic read/write utility for a <c>long</c> value. The atomic classes found in this package
+            were are meant to replicate the <c>java.util.concurrent.atomic</c> package in Java by Doug Lea. The two main differences
+            are implicit casting back to the <c>long</c> data type, and the use of a non-volatile inner variable.
+            
+            <para>The internals of these classes contain wrapped usage of the <c>System.Threading.Interlocked</c> class, which is how
+            we are able to provide atomic operation without the use of locks. </para>
+            </summary>
+            <remarks>
+            It's also important to note that <c>++</c> and <c>--</c> are never atomic, and one of the main reasons this class is 
+            needed. I don't believe its possible to overload these operators in a way that is autonomous.
+            </remarks>
+            author Matt Bolt
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.#ctor">
+            <summary>
+            Creates a new <c>AtomicLong</c> instance with an initial value of <c>0</c>.
+            </summary>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.#ctor(System.Int64)">
+            <summary>
+            Creates a new <c>AtomicLong</c> instance with the initial value provided.
+            </summary>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.Get">
+            <summary>
+            This method returns the current value.
+            </summary>
+            <returns>
+            The <c>long</c> value accessed atomically.
+            </returns>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.Set(System.Int64)">
+            <summary>
+            This method sets the current value atomically.
+            </summary>
+            <param name="value">
+            The new value to set.
+            </param>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.GetAndSet(System.Int64)">
+            <summary>
+            This method atomically sets the value and returns the original value.
+            </summary>
+            <param name="value">
+            The new value.
+            </param>
+            <returns>
+            The value before setting to the new value.
+            </returns>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.CompareAndSet(System.Int64,System.Int64)">
+            <summary>
+            Atomically sets the value to the given updated value if the current value <c>==</c> the expected value.
+            </summary>
+            <param name="expected">
+            The value to compare against.
+            </param>
+            <param name="result">
+            The value to set if the value is equal to the <c>expected</c> value.
+            </param>
+            <returns>
+            <c>true</c> if the comparison and set was successful. A <c>false</c> indicates the comparison failed.
+            </returns>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.AddAndGet(System.Int64)">
+            <summary>
+            Atomically adds the given value to the current value.
+            </summary>
+            <param name="delta">
+            The value to add.
+            </param>
+            <returns>
+            The updated value.
+            </returns>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.GetAndAdd(System.Int64)">
+            <summary>
+            This method atomically adds a <c>delta</c> the value and returns the original value.
+            </summary>
+            <param name="delta">
+            The value to add to the existing value.
+            </param>
+            <returns>
+            The value before adding the delta.
+            </returns>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.Increment">
+            <summary>
+            This method increments the value by 1 and returns the previous value. This is the atomic 
+            version of post-increment.
+            </summary>
+            <returns>
+            The value before incrementing.
+            </returns>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.Decrement">
+            <summary>
+            This method decrements the value by 1 and returns the previous value. This is the atomic 
+            version of post-decrement.
+            </summary>
+            <returns>
+            The value before decrementing.
+            </returns>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.PreIncrement">
+            <summary>
+            This method increments the value by 1 and returns the new value. This is the atomic version 
+            of pre-increment.
+            </summary>
+            <returns>
+            The value after incrementing.
+            </returns>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.PreDecrement">
+            <summary>
+            This method decrements the value by 1 and returns the new value. This is the atomic version 
+            of pre-decrement.
+            </summary>
+            <returns>
+            The value after decrementing.
+            </returns>
+        </member>
+        <member name="M:Serilog.Extras.Timing.AtomicLong.op_Implicit(Serilog.Extras.Timing.AtomicLong)~System.Int64">
+            <summary>
+            This operator allows an implicit cast from <c>AtomicLong</c> to <c>long</c>.
+            </summary>
+        </member>
+        <member name="T:Serilog.Extras.Timing.ICounterMeasure">
+            <summary>
+            Provides a counter which allow increments and decrements. 
+            </summary>
+        </member>
+        <member name="T:Serilog.Extras.Timing.IMeasure">
+            <summary>
+            Common measure interface.
+            </summary>
+        </member>
+        <member name="M:Serilog.Extras.Timing.IMeasure.Write">
+            <summary>
+            Write the measurement data to the log system.
+            </summary>
+        </member>
+        <member name="M:Serilog.Extras.Timing.ICounterMeasure.Increment">
+            <summary>
+            Increments the counter.
+            </summary>
+        </member>
+        <member name="M:Serilog.Extras.Timing.ICounterMeasure.Decrement">
+            <summary>
+            Decrements the counter.
+            </summary>
+        </member>
+        <member name="M:Serilog.Extras.Timing.ICounterMeasure.Reset">
+            <summary>
+            Resets the counter back to zero.
+            </summary>
+        </member>
+        <member name="M:Serilog.Extras.Timing.CounterMeasure.#ctor(Serilog.ILogger,System.String,System.String,Serilog.Events.LogEventLevel,System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Serilog.Extras.Timing.CounterMeasure"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="name">The name.</param>
+            <param name="counts">The counts.</param>
+            <param name="level">The level.</param>
+            <param name="template">The template.</param>
+            <param name="directWrite">if set to <c>true</c> then directly write to the log.</param>
+        </member>
+        <member name="T:Serilog.Extras.Timing.IGaugeMeasure">
+            <summary>
+            Measures an operation.
+            </summary>
+        </member>
+        <member name="M:Serilog.Extras.Timing.GaugeMeasure`1.#ctor(Serilog.ILogger,System.String,System.String,System.Func{`0},Serilog.Events.LogEventLevel,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Serilog.Extras.Timing.GaugeMeasure`1"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="name">The name.</param>
+            <param name="gauges">The gauges.</param>
+            <param name="operation">The operation.</param>
+            <param name="level">The level.</param>
+            <param name="template">The template.</param>
+        </member>
+        <member name="T:Serilog.LoggerExtensions">
+            <summary>
+            Extends <see cref="T:Serilog.LoggerConfiguration"/> to add Full .NET Framework 
+            capabilities.
+            </summary>
+        </member>
+        <member name="M:Serilog.LoggerExtensions.BeginTimedOperation(Serilog.ILogger,System.String,System.String,Serilog.Events.LogEventLevel,System.Nullable{System.TimeSpan})">
+            <summary>
+            Begins an operation by placing the code to be timed inside a using block. 
+            When the block is being exited, the time it took is logged.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="identifier">The identifier used for the timing. If non specified, a random guid will be used.</param>
+            <param name="description">A description for this operation.</param>
+            <param name="level">The level used to write the timing operation details to the log. By default this is the information level.</param>
+            <param name="warnIfExceeds">Specifies a limit, if it takes more than this limit, the level will be set to warning. By default this is not used.</param>
+            <returns>A disposable object. Wrap this inside a using block so the dispose can be called to stop the timing.</returns>
+        </member>
+        <member name="M:Serilog.LoggerExtensions.GaugeOperation``1(Serilog.ILogger,System.String,System.String,System.Func{``0},Serilog.Events.LogEventLevel,System.String)">
+             <summary>
+             Retrieves a value as defined by the operation. For example the number of items inside a queue.
+             Call the Write() method to actually read the value and write to log.
+             </summary>
+             <example>
+             Create a gauge to measure the number of items in a queue.
+             <code>
+               var gauge = logger.GaugeOperation("queue", "item(s)", () => queue.Count());
+            
+               gauge.Write();
+            
+               queue.Enqueue(20);
+            
+               gauge.Write();
+             </code>
+             </example>
+             <param name="logger">The logger.</param>
+             <param name="name">The name of the counter, for example 'Queue size'.</param>
+             <param name="uom">The unit of measure, for example 'items'.</param>
+             <param name="operation">The actual function to retrieve the value from.</param>
+             <param name="level">The level used to write the timing operation details to the log. By default this is the information level.</param>
+             <param name="template">A message template describing the format used to write to the log.</param>
+             <typeparam name="T"></typeparam>
+             <returns>Returns a IGaugeMeasure on which you can call the Write() function to output to the log.</returns>
+        </member>
+        <member name="M:Serilog.LoggerExtensions.CountOperation(Serilog.ILogger,System.String,System.String,System.Boolean,Serilog.Events.LogEventLevel,System.String)">
+            <summary>
+            Creates a new counter which can be used to increment or decrement a long value. 
+            </summary>
+            <example>
+            Create a new counter and increment the value.
+            <code>
+               var counter = logger.CountOperation("counter", "operation(s)", true, LogEventLevel.Debug);
+               counter.Increment();
+            </code>
+            </example>
+            <param name="logger">The logger.</param>
+            <param name="name">The name of the counter, for example 'Page visits'.</param>
+            <param name="uom">The unit of measure, for example 'hits'.</param>
+            <param name="directWrite">Indicates if a change in the counter needs to be written to the log directly. By default enabled. When disabled, you need to explicitly call the Write() method to output the current value.</param>
+            <param name="level">The level used to write the timing operation details to the log. By default this is the information level.</param>
+            <param name="template">A message template describing the format used to write to the log.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Serilog.Extras.Timing.TimedOperation.#ctor(Serilog.ILogger,Serilog.Events.LogEventLevel,System.Nullable{System.TimeSpan},System.Object,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Serilog.Extras.Timing.TimedOperation"/> class.
+            </summary>
+            <param name="logger">The logger.</param>
+            <param name="identifier">The identifier used for the timing. If non specified, a random guid will be used.</param>
+            <param name="description">A description for the operation.</param>
+            <param name="level">The level used to write the timing operation details to the logger. By default this is the information level.</param>
+            <param name="warnIfExceeds">Specifies a limit, if it takes more than this limit, the level will be set to warning. By default this is not used.</param>
+        </member>
+        <member name="M:Serilog.Extras.Timing.TimedOperation.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+    </members>
+</doc>

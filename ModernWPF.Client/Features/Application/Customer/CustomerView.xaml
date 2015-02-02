@@ -6,16 +6,18 @@
              xmlns:controls="clr-namespace:ModernWPF.Client.Features.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <controls:AutoGrid Columns="auto,*">
-        <controls:Label  Target="{Binding ElementName=CustomerDetails_FirstName}" />
-        <TextBox x:Name="CustomerDetails_FirstName" />
+    <controls:BusyIndicator IsBusy="{Binding CreateCustomerAction.IsExecuting}" ShowOverlay="True" OverlayOpacity="0.5">
+        <controls:AutoGrid Columns="auto,*">
+            <controls:Label  Target="{Binding ElementName=CustomerDetails_FirstName}" />
+            <TextBox x:Name="CustomerDetails_FirstName" />
 
-        <controls:Label  Target="{Binding ElementName=CustomerDetails_LastName}" />
-        <TextBox x:Name="CustomerDetails_LastName" />
+            <controls:Label  Target="{Binding ElementName=CustomerDetails_LastName}" />
+            <TextBox x:Name="CustomerDetails_LastName" />
 
-        <controls:Label  Target="{Binding ElementName=CustomerDetails_FavouriteFood}" />
-        <TextBox x:Name="CustomerDetails_FavouriteFood" />
+            <controls:Label  Target="{Binding ElementName=CustomerDetails_FavouriteFood}" />
+            <TextBox x:Name="CustomerDetails_FavouriteFood" />
         
-        <Button Command="{Binding CreateCustomerAction}" Content="Create" />
-    </controls:AutoGrid>
+            <Button Command="{Binding CreateCustomerAction}" Content="Create" />
+        </controls:AutoGrid>
+    </controls:BusyIndicator>
 </UserControl>

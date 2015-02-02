@@ -52,11 +52,14 @@
     </Reference>
     <Reference Include="Serilog, Version=1.4.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Serilog.1.4.139\lib\net45\Serilog.dll</HintPath>
+      <HintPath>..\packages\Serilog.1.4.155\lib\net45\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Extras.Timing">
+      <HintPath>..\packages\Serilog.Extras.Timing.1.4.155\lib\net45\Serilog.Extras.Timing.dll</HintPath>
     </Reference>
     <Reference Include="Serilog.FullNetFx, Version=1.4.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Serilog.1.4.139\lib\net45\Serilog.FullNetFx.dll</HintPath>
+      <HintPath>..\packages\Serilog.1.4.155\lib\net45\Serilog.FullNetFx.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -91,6 +94,9 @@
     <Compile Include="EventAggregatorSubscriptionTracker.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Features\Actions\ActionBase.cs" />
+    <Compile Include="Features\Actions\AsyncActionBase.cs" />
+    <Compile Include="Features\Actions\AsyncActionErrorArgs.cs" />
+    <Compile Include="Features\Actions\ICommandEx.cs" />
     <Compile Include="Features\Alerts\Alert.cs" />
     <Compile Include="Features\Alerts\AlertMessage.cs" />
     <Compile Include="Features\Alerts\AlertModel.cs" />
@@ -106,8 +112,19 @@
     </Compile>
     <Compile Include="Features\Application\Customer\CustomerViewModel.cs" />
     <Compile Include="Features\Application\Customer\Messages\CustomerDetailsChangedMessage.cs" />
+    <Compile Include="Features\Controls\AsyncScreen.cs" />
     <Compile Include="Features\Controls\AutoGrid.cs" />
+    <Compile Include="Features\Controls\BusyIndicator.cs" />
+    <Compile Include="Features\Controls\ExtensionProperties.cs" />
+    <Compile Include="Features\Controls\IGetBusy.cs" />
+    <Compile Include="Features\Controls\InitiatorInfo.cs" />
     <Compile Include="Features\Controls\Label.cs" />
+    <Compile Include="Features\Controls\LabelExtensions.cs" />
+    <Compile Include="Features\Controls\LabelValidationHelper.cs" />
+    <Compile Include="Features\Controls\LabelValidationMetadata.cs" />
+    <Compile Include="Features\Controls\WorkQueue.cs" />
+    <Compile Include="Features\Controls\WorkQueueItem.cs" />
+    <Compile Include="Features\Converters\BooleanToCollapsedVisibilityConverter.cs" />
     <Compile Include="Features\Converters\HorizontalAlignmentToTextAlignmentConverter.cs" />
     <Compile Include="Features\Converters\OrBoolConverter.cs" />
     <Compile Include="Features\Validation\IValidatable.cs" />
@@ -161,13 +178,19 @@
   <ItemGroup>
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\Images\loader1.png" />
+  </ItemGroup>
   <ItemGroup>
     <Page Include="Assets\ResourceDictionaries\AlertStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Assets\ResourceDictionaries\BaseStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Assets\ResourceDictionaries\BusyStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

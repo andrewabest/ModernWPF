@@ -1,11 +1,13 @@
-﻿using Caliburn.Micro;
+﻿using System;
+using System.Threading.Tasks;
+using Caliburn.Micro;
 using ModernWPF.Client.Features.Actions;
 using ModernWPF.Client.Features.Alerts;
 using ModernWPF.Client.Features.Application.Customer.Messages;
 
 namespace ModernWPF.Client.Features.Application.Customer.Actions
 {
-    public class CreateCustomerAction : ActionBase, IHandle<CustomerDetailsChangedMessage>
+    public class CreateCustomerAction : AsyncActionBase, IHandle<CustomerDetailsChangedMessage>
     {
         private CustomerDetailsViewModel _customerDetails;
 
@@ -14,8 +16,10 @@ namespace ModernWPF.Client.Features.Application.Customer.Actions
             get { return _customerDetails != null && _customerDetails.IsValid; }
         }
 
-        public override void Execute(object parameter)
+        protected async override Task ExecuteAsync(object parameter)
         {
+            await Task.Delay(TimeSpan.FromSeconds(3));
+
             Alert.OfSuccess("Customer", "Creation successful!");
         }
 

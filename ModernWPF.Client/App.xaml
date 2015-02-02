@@ -14,6 +14,7 @@
                 <ResourceDictionary Source="Assets/ResourceDictionaries/LabelStyles.xaml"/>
                 <ResourceDictionary Source="Assets/ResourceDictionaries/ValidationStyles.xaml"/>
                 <ResourceDictionary Source="Assets/ResourceDictionaries/AlertStyles.xaml"/>
+                <ResourceDictionary Source="Assets/ResourceDictionaries/BusyStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

@@ -116,6 +116,14 @@
             until the return value from this method has been disposed.</remarks>
             <returns></returns>
         </member>
+        <member name="P:Serilog.Context.LogContext.PermitCrossAppDomainCalls">
+            <summary>
+            When calling into appdomains without Serilog loaded, e.g. via remoting or during unit testing,
+            it may be necesary to set this value to true so that serialization exceptions are avoided. When possible,
+            using the <see cref="M:Serilog.Context.LogContext.Suspend"/> method in a using block around the call has a lower overhead and
+            should be preferred.
+            </summary>
+        </member>
         <member name="T:Serilog.LoggerConfigurationFullNetFxExtensions">
             <summary>
             Extends <see cref="T:Serilog.LoggerConfiguration"/> to add Full .NET Framework 
@@ -326,6 +334,16 @@
             Emit a batch of log events, running to completion synchronously.
             </summary>
             <param name="events">The events to emit.</param>
+            <remarks>Override either <see cref="M:Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.EmitBatch(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})"/> or <see cref="M:Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.EmitBatchAsync(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})"/>,
+            not both.</remarks>
+        </member>
+        <member name="M:Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.EmitBatchAsync(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})">
+            <summary>
+            Emit a batch of log events, running asynchronously.
+            </summary>
+            <param name="events">The events to emit.</param>
+            <remarks>Override either <see cref="M:Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.EmitBatch(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})"/> or <see cref="M:Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.EmitBatchAsync(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})"/>,
+            not both. Overriding EmitBatch() is preferred.</remarks>
         </member>
         <member name="M:Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.Emit(Serilog.Events.LogEvent)">
             <summary>

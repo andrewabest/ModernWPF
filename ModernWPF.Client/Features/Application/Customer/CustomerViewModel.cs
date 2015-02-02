@@ -2,10 +2,11 @@
 using Caliburn.Micro;
 using ModernWPF.Client.Features.Application.Customer.Actions;
 using ModernWPF.Client.Features.Application.Customer.Messages;
+using ModernWPF.Client.Features.Controls;
 
 namespace ModernWPF.Client.Features.Application.Customer
 {
-    public class CustomerViewModel : Screen
+    public class CustomerViewModel : AsyncScreen
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly CreateCustomerAction _createCustomerAction;
