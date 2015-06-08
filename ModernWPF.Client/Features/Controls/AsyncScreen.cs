@@ -6,7 +6,7 @@ using ModernWPF.Client.Extensions;
 
 namespace ModernWPF.Client.Features.Controls
 {
-    public abstract class AsyncScreen : Screen, IDisposable, IGetBusy
+    public abstract class AsyncScreen : ScreenWithClose, IDisposable, IGetBusy
     {
         private readonly Lazy<WorkQueue> _workQueue;
         private bool _doingBusyWork;

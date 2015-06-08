@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="ModernWPF.Client.Features.Controls.DialogConductorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:controls="clr-namespace:ModernWPF.Client.Features.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style x:Key="PanelCloseButtonStyle" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Width" Value="17" />
+            <Setter Property="Height" Value="17" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Image x:Name="XButton" Source="pack://application:,,,ModernWPF.Client;component/Assets/Images/panel_close.png" Stretch="None"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="UnderlayBrush" Color="Black" Opacity="0.25" />
+    </UserControl.Resources>
+    <ItemsControl x:Name="ActiveItems" Visibility="{Binding HasActiveItem, Converter={StaticResource BooleanToCollapsedVisibilityConverter}}">
+        <ItemsControl.ItemsPanel>
+            <ItemsPanelTemplate>
+                <Grid />
+            </ItemsPanelTemplate>
+        </ItemsControl.ItemsPanel>
+        <ItemsControl.ItemTemplate>
+            <DataTemplate DataType="{x:Type controls:IScreenWithClose}">
+                <Grid Background="{StaticResource UnderlayBrush}">
+                    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Fill="Black">
+                            <Rectangle.Effect>
+                                <DropShadowEffect Direction="0" ShadowDepth="0" BlurRadius="15"/>
+                            </Rectangle.Effect>
+                        </Rectangle>
+
+                        <Grid Background="{StaticResource BackgroundBrush}">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding DisplayName}" 
+                                       FontSize="20"
+                                       Foreground="{StaticResource Charcoal70Brush}" 
+                                       Margin="20,20,40,20" 
+                                       TextTrimming="CharacterEllipsis" />
+
+                            <ContentControl cal:View.Model="{Binding}" Grid.Row="1" Margin="20,0,20,20" />
+
+                            <Button 
+                                Command="{Binding DataContext.TryCloseCommand, ElementName=UserControl}"
+                                Visibility="{Binding HasClose, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                Style="{StaticResource PanelCloseButtonStyle}"
+                                VerticalAlignment="Top"
+                                HorizontalAlignment="Right" Margin="20" IsCancel="True" Grid.RowSpan="2"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
+</UserControl>

@@ -20,13 +20,13 @@ namespace ModernWPF.Client
     {
         public App()
         {
+            Log.Logger = new LoggerConfiguration().WriteTo.RollingFile(Environment.CurrentDirectory).CreateLogger();
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
             DispatcherUnhandledException += OnDispatcherUnhandledException;
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            var logger = IoC.Container.Resolve<ILogger>();
             var exception = e.ExceptionObject as Exception;
 
             if (exception == null && e.ExceptionObject != null)
@@ -34,14 +34,12 @@ namespace ModernWPF.Client
                 exception = new ApplicationException(">A non-CLI exception occurred: {0}".FormatWith(e.ExceptionObject));
             }
 
-            logger.Write(LogEventLevel.Fatal, exception, "An unhandled exception occurred", true);
+            Log.Error(exception, "An unhandled exception occurred", true);
         }
 
         public static void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            var logger = IoC.Container.Resolve<ILogger>();
-
-            logger.Write(LogEventLevel.Fatal, e.Exception, "An unhandled exception occurred", true);
+            Log.Error(e.Exception, "An unhandled exception occurred", true);
         }
     }
 }

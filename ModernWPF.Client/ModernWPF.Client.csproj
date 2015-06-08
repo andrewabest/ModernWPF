@@ -89,13 +89,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="AutofacModules\ActionsModule.cs" />
-    <Compile Include="AutofacModules\LoggingModule.cs" />
+    <Compile Include="AutofacModules\ControlsModule.cs" />
     <Compile Include="AutofacModules\MessagingModule.cs" />
     <Compile Include="EventAggregatorSubscriptionTracker.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Features\Actions\ActionBase.cs" />
     <Compile Include="Features\Actions\AsyncActionBase.cs" />
     <Compile Include="Features\Actions\AsyncActionErrorArgs.cs" />
+    <Compile Include="Features\Actions\DelegateCommand.cs" />
     <Compile Include="Features\Actions\ICommandEx.cs" />
     <Compile Include="Features\Alerts\Alert.cs" />
     <Compile Include="Features\Alerts\AlertMessage.cs" />
@@ -106,22 +107,38 @@
     </Compile>
     <Compile Include="Features\Alerts\AlertsViewModel.cs" />
     <Compile Include="Features\Application\Customer\Actions\CreateCustomerAction.cs" />
+    <Compile Include="Features\Application\Customer\Actions\ShowDialogWithoutResultAction.cs" />
+    <Compile Include="Features\Application\Customer\Actions\ShowDialogWithResultAction.cs" />
+    <Compile Include="Features\Application\Customer\ConfirmationView.xaml.cs">
+      <DependentUpon>ConfirmationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Application\Customer\ConfirmationViewModel.cs" />
     <Compile Include="Features\Application\Customer\CustomerDetailsViewModel.cs" />
     <Compile Include="Features\Application\Customer\CustomerView.xaml.cs">
       <DependentUpon>CustomerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Application\Customer\CustomerViewModel.cs" />
     <Compile Include="Features\Application\Customer\Messages\CustomerDetailsChangedMessage.cs" />
+    <Compile Include="Features\Application\Customer\QuestionView.xaml.cs">
+      <DependentUpon>QuestionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Application\Customer\QuestionViewModel.cs" />
     <Compile Include="Features\Controls\AsyncScreen.cs" />
     <Compile Include="Features\Controls\AutoGrid.cs" />
     <Compile Include="Features\Controls\BusyIndicator.cs" />
+    <Compile Include="Features\Controls\DialogConductorView.xaml.cs">
+      <DependentUpon>DialogConductorView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Controls\DialogConductorViewModel.cs" />
     <Compile Include="Features\Controls\ExtensionProperties.cs" />
     <Compile Include="Features\Controls\IGetBusy.cs" />
     <Compile Include="Features\Controls\InitiatorInfo.cs" />
+    <Compile Include="Features\Controls\IReturnOnClose.cs" />
     <Compile Include="Features\Controls\Label.cs" />
     <Compile Include="Features\Controls\LabelExtensions.cs" />
     <Compile Include="Features\Controls\LabelValidationHelper.cs" />
     <Compile Include="Features\Controls\LabelValidationMetadata.cs" />
+    <Compile Include="Features\Controls\ScreenWithClose.cs" />
     <Compile Include="Features\Controls\WorkQueue.cs" />
     <Compile Include="Features\Controls\WorkQueueItem.cs" />
     <Compile Include="Features\Converters\BooleanToCollapsedVisibilityConverter.cs" />
@@ -214,7 +231,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Features\Application\Customer\ConfirmationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Features\Application\Customer\CustomerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Application\Customer\QuestionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Features\Controls\DialogConductorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +251,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\panel_close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="Fody.targets" />

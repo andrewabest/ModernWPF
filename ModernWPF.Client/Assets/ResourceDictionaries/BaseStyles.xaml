@@ -1,7 +1,33 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Color x:Key="ErrorHighlightColor">#FFdc000c</Color>
+    <!-- Pallette Colors -->
+    <SolidColorBrush x:Key="Green80Brush" Color="{StaticResource Green80}"></SolidColorBrush>
+    <Color x:Key="Charcoal70">#FF5a5a5a</Color>
+    <SolidColorBrush x:Key="Charcoal70Brush" Color="{StaticResource Charcoal70}"></SolidColorBrush>
+    <Color x:Key="Charcoal30">#FFc3c6c9</Color>
+    <SolidColorBrush x:Key="Charcoal30Brush" Color="{StaticResource Charcoal30}"></SolidColorBrush>
+    <Color x:Key="Charcoal10">#FFf0f0f0</Color>
+    <SolidColorBrush x:Key="Charcoal10Brush" Color="{StaticResource Charcoal10}"></SolidColorBrush>
+    <Color x:Key="Charcoal">#FF313131</Color>
+    <SolidColorBrush x:Key="CharcoalBrush" Color="{StaticResource Charcoal}"></SolidColorBrush>
+    <Color x:Key="Red">#FFBB221B</Color>
+    <SolidColorBrush x:Key="RedBrush" Color="{StaticResource Red}"></SolidColorBrush>
+    <Color x:Key="Navy">#FF004673</Color>
+    <SolidColorBrush x:Key="NavyBrush" Color="{StaticResource Navy}"></SolidColorBrush>
+    <Color x:Key="Yellow">#FFF5EA51</Color>
+    <SolidColorBrush x:Key="YellowBrush" Color="{StaticResource Yellow}"></SolidColorBrush>
+    <Color x:Key="Blue">#FF2F94D5</Color>
+    <SolidColorBrush x:Key="BlueBrush" Color="{StaticResource Blue}"></SolidColorBrush>
+    <Color x:Key="White">#FFFFFFFF</Color>
+    <SolidColorBrush x:Key="WhiteBrush" Color="{StaticResource White}"></SolidColorBrush>
+
+
+    <!-- Typography Colors-->
+    <SolidColorBrush x:Key="InvertedTextBrush" Color="{StaticResource White}"></SolidColorBrush>
     
-    <SolidColorBrush x:Key="ErrorHighlightColorBrush" Color="{StaticResource ErrorHighlightColor}"/>
+    <!-- Other Colors-->
+    <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource White}"></SolidColorBrush>
+    <SolidColorBrush x:Key="ErrorHighlightColorBrush" Color="{StaticResource Red}"/>
+    <SolidColorBrush x:Key="DisabledBrush" Color="{StaticResource Charcoal30}"></SolidColorBrush>
 </ResourceDictionary>
