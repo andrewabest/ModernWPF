@@ -123,6 +123,7 @@
       <DependentUpon>QuestionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Features\Application\Customer\QuestionViewModel.cs" />
+    <Compile Include="Features\Behaviors\FocusBehavior.cs" />
     <Compile Include="Features\Controls\AsyncScreen.cs" />
     <Compile Include="Features\Controls\AutoGrid.cs" />
     <Compile Include="Features\Controls\BusyIndicator.cs" />

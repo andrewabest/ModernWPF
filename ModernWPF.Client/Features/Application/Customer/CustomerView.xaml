@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:controls="clr-namespace:ModernWPF.Client.Features.Controls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:ModernWPF.Client.Features.Behaviors"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <controls:AutoGrid Rows="auto,auto">
@@ -13,7 +15,11 @@
                 <Rectangle />
             
                 <controls:Label  Target="{Binding ElementName=CustomerDetails_FirstName}" />
-                <TextBox x:Name="CustomerDetails_FirstName" />
+                <TextBox x:Name="CustomerDetails_FirstName">
+                    <i:Interaction.Behaviors>
+                        <behaviors:FocusBehavior />
+                    </i:Interaction.Behaviors>
+                </TextBox>
 
                 <controls:Label  Target="{Binding ElementName=CustomerDetails_LastName}" />
                 <TextBox x:Name="CustomerDetails_LastName" />
