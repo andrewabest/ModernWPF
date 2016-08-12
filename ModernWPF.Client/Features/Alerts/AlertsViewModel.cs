@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Caliburn.Micro;
 
@@ -33,9 +33,9 @@ namespace ModernWPF.Client.Features.Alerts
 
         public void RemoveSelectedAlert(MouseButtonEventArgs eventArgs)
         {
-            var item = (FrameworkElement)eventArgs.OriginalSource;
+            var item = (ListBox)eventArgs.Source;
 
-            RemoveAlert((AlertModel)item.DataContext);
+            RemoveAlert((AlertModel)item.SelectedItem);
         }
 
         public void Handle(AlertMessage message)
